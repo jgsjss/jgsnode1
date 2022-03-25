@@ -4,8 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+// var indexRouter = require('./routes/index');
+// var usersRouter = require('./routes/users');
 
 var app = express();
 
@@ -13,18 +13,27 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.listen(5000, function (req, res){
-  console.log("서버시작 : ", 5000)
+
+app.listen(8000, function (req, res){
+  console.log("서버시작 : ", 8000)
 })
+
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'))
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// app.use(express.static(path.join(__dirname, './public')))
+
+
+// app.use('/', indexRouter);
+// app.use('/users', usersRouter);
+
+app.get('/', function (req, res, next){
+  res.render('index.ejs')
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -41,5 +50,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
 
 module.exports = app;
