@@ -1,7 +1,8 @@
 
 .main-background{
    /*ejs에서 커스텀 css 파일 적용시 이미지 경로를 아래처럼 지정해야함*/
-  background-image: url("../images/화면 캡처 2022-03-25 140654.png");
+  background-image: url("../images/3472475230654151265.png");
   background-size: cover;
   color: white;
+  white-space: pre-wrap;
 }
